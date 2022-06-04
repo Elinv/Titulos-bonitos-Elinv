@@ -1,0 +1,203 @@
+        // filtros para las imagenes
+/*         backCtx.filter = 'grayscale(1)';
+        context.filter = 'grayscale(1)'; */
+        //contrast blur grayscale hue-rotate drop-shadow
+        
+        //filter: url("filters.svg#filter-id");
+
+        /* <filter-function> values */
+/*         filter: blur(5px);
+        filter: brightness(0.4);
+        filter: contrast(200%);
+        filter: drop-shadow(16px 16px 20px blue);
+        filter: grayscale(50%);
+        filter: hue-rotate(90deg);
+        filter: invert(75%);
+        filter: opacity(25%);
+        filter: saturate(30%);
+        filter: sepia(60%);
+ */        
+        /* Multiple filters */
+        /* filter: contrast(175%) brightness(3%); */
+        
+        /* Use no filter */
+        /* filter: none; */
+        
+        // Draw image with filter
+        /* context.filter = 'contrast(1.4) sepia(1) drop-shadow(-9px 9px 3px #e81)'; */
+
+        /* none No filter is applied and this has the effect of removing filters.
+
+        url(url) - a url referencing an SVG filter element, see later.
+        
+        blur(amount) Applies a Gaussian blur to the drawing with amount giving the standard deviation i.e. the extent of the blur. A value of 0 leaves the input unchanged.
+        
+        brightness(percent) A value under 100% darkens the image, while a value over 100% brightens it. A value of 0% will create an image that is completely black, while a value of 100% leaves the input unchanged.
+        
+        contrast(percent) Adjusts the contrast of the drawing. A value of 0% will create a drawing that is completely black. A value of 100% leaves the drawing unchanged.
+        
+        grayscale(percentage) Converts the drawing to grayscale. A value of 100% is completely grayscale. A value of 0% leaves the drawing unchanged.
+        
+        invert(percentage) Inverts the drawing. A value of 100% means complete inversion. A value of 0% leaves the drawing unchanged.
+        
+        opacity(percentage) Applies transparency to the drawing. A value of 0% means completely transparent. A value of 100% leaves the drawing unchanged.
+        
+        saturate(percentage) Saturates the drawing. A value of 0% means completely unsaturated. A value of 100% leaves the drawing unchanged.
+        
+        sepia(percentage) Converts the drawing to sepia. A value of 100% means completely sepia. A value of 0% leaves the drawing unchanged.
+        
+        hue-rotate(angle) Applies a hue rotation on the drawing. A value of 0 degrees leaves the input unchanged.
+        
+        Drop-shadow() This function takes up to five arguments:
+        
+        offset-x Specifies the horizontal distance of the shadow.
+        offset-y Specifies the vertical distance of the shadow.
+        Blur-radius The larger this value, the bigger the blur, so the
+        shadow becomes bigger and lighter.
+        Color CSS color specification */
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // filtro multiples combinados
+            if (invertCheck.checked && grayScaleCheck.checked && sepiaCheck.checked){
+                let grisEscalaFil = $("#grayscaleFil").val();
+                let invertFil = $("#InvertFil").val();
+                let sepiaFil =  $("#sepiaFil").val();
+                context.filter = 'invert(' + invertFil + '%) grayscale(' + grisEscalaFil + '%) sepia(' + sepiaFil + '%)';
+            
+            }else if (invertCheck.checked && grayScaleCheck.checked){
+                let grisEscalaFil = $("#grayscaleFil").val();
+                let invertFil = $("#InvertFil").val();
+                context.filter = 'invert(' + invertFil + '%) grayscale(' + grisEscalaFil + '%)';
+            
+            }else if (grayScaleCheck.checked && sepiaCheck.checked){
+                let grisEscalaFil = $("#grayscaleFil").val();
+                let sepiaFil =  $("#sepiaFil").val();
+                context.filter = 'grayscale(' + grisEscalaFil + '%) sepia(' + sepiaFil + '%)';
+
+            }else if (invertCheck.checked && sepiaCheck.checked){
+                let invertFil = $("#InvertFil").val();
+                let sepiaFil =  $("#sepiaFil").val();
+                context.filter = 'invert(' + invertFil + '%) sepia(' + sepiaFil + '%)';
+                
+            // filtro escala de grises
+            }else if (grayScaleCheck.checked){
+                context.filter = 'grayscale(' + $("#grayscaleFil").val() + '%)';
+            
+            // filtro invert
+            }else if (invertCheck.checked){
+                context.filter = 'invert(' + $("#InvertFil").val() + '%)';
+
+            // filtro sepia
+            }else if (sepiaCheck.checked){
+                context.filter = 'sepia(' + $("#sepiaFil").val() + '%)';
+
+            // filtro hue-rotate
+            }else if (hue_rotateCheck.checked){
+                context.filter = 'hue-rotate(' + $("#hue_rotateFil").val() + 'deg)';
+
+            // filtro Brightness
+            }else if (brightnessCheck.checked){
+                context.filter = 'brightness(' + $("#brightnessFil").val() + '%)';
+
+            // filtro Contrast
+            }else if (contrastCheck.checked){
+                context.filter = 'contrast(' + $("#contrastFil").val() + '%)';
+
+            // filtro Saturate
+            }else if (saturateCheck.checked){
+                context.filter = 'saturate(' + $("#saturateFil").val() + '%)';
+            
+            // filtro Blur
+            }else if (blurCheck.checked){
+                context.filter = 'blur(' + $("#blurFil").val() + 'px)';
+
+            // filtro Opacity
+            }else if (opacityCheck.checked){
+                context.filter = 'opacity(' + $("#opacityFil").val() + '%)';
+
+            }else{
+                context.filter = 'none';
+            }
+
+
+
+
+
+
+
+                    // filtro multiples combinados
+                    if (invertCheck.checked && grayScaleCheck.checked && sepiaCheck.checked){
+                        let grisEscalaFil = $("#grayscaleFil").val();
+                        let invertFil = $("#InvertFil").val();
+                        let sepiaFil =  $("#sepiaFil").val();
+                        context.filter = 'invert(' + invertFil + '%) grayscale(' + grisEscalaFil + '%) sepia(' + sepiaFil + '%)';
+                    
+                    }else if (invertCheck.checked && grayScaleCheck.checked){
+                        let grisEscalaFil = $("#grayscaleFil").val();
+                        let invertFil = $("#InvertFil").val();
+                        context.filter = 'invert(' + invertFil + '%) grayscale(' + grisEscalaFil + '%)';
+                    
+                    }else if (grayScaleCheck.checked && sepiaCheck.checked){
+                        let grisEscalaFil = $("#grayscaleFil").val();
+                        let sepiaFil =  $("#sepiaFil").val();
+                        context.filter = 'grayscale(' + grisEscalaFil + '%) sepia(' + sepiaFil + '%)';
+        
+                    }else if (invertCheck.checked && sepiaCheck.checked){
+                        let invertFil = $("#InvertFil").val();
+                        let sepiaFil =  $("#sepiaFil").val();
+                        context.filter = 'invert(' + invertFil + '%) sepia(' + sepiaFil + '%)';
+                        
+                    // filtro escala de grises
+                    }else if (grayScaleCheck.checked){
+                        context.filter = 'grayscale(' + $("#grayscaleFil").val() + '%)';
+                    
+                    // filtro invert
+                    }else if (invertCheck.checked){
+                        context.filter = 'invert(' + $("#InvertFil").val() + '%)';
+        
+                    // filtro sepia
+                    }else if (sepiaCheck.checked){
+                        context.filter = 'sepia(' + $("#sepiaFil").val() + '%)';
+        
+                    // filtro hue-rotate
+                    }else if (hue_rotateCheck.checked){
+                        context.filter = 'hue-rotate(' + $("#hue_rotateFil").val() + 'deg)';
+        
+                    // filtro Brightness
+                    }else if (brightnessCheck.checked){
+                        context.filter = 'brightness(' + $("#brightnessFil").val() + '%)';
+        
+                    // filtro Contrast
+                    }else if (contrastCheck.checked){
+                        context.filter = 'contrast(' + $("#contrastFil").val() + '%)';
+        
+                    // filtro Saturate
+                    }else if (saturateCheck.checked){
+                        context.filter = 'saturate(' + $("#saturateFil").val() + '%)';
+                    
+                    // filtro Blur
+                    }else if (blurCheck.checked){
+                        context.filter = 'blur(' + $("#blurFil").val() + 'px)';
+        
+                    // filtro Opacity
+                    }else if (opacityCheck.checked){
+                        context.filter = 'opacity(' + $("#opacityFil").val() + '%)';
+        
+                    }else{
+                        context.filter = 'none';
+                    }
+        
+                }else{
+                    context.filter = 'none';
+                }
