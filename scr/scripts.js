@@ -528,7 +528,7 @@ $(document).ready(function () {
         };
         $.ajax({
             data: parametros,
-            url: './php/restorecolorespreset.php',
+            url: './php/restorePreset.php',
             type: 'post',
             beforeSend: function () {
                 //$('#listArchivos').html("Procesando, espere por favor...");
@@ -551,11 +551,11 @@ $(document).ready(function () {
                 for (const files in filesColor) {
                     if (Object.hasOwnProperty.call(filesColor, files)) {
                         if (filesColor[files] != 'undefined') {
-                            botones += '<button type="button" class="btn btn-primary savePresetColor" style="margin-top: 10px; margin-left: 10px;">' + filesColor[files] + '</button>';
+                            botones += '<button type="button" class="btn btn-primary savePresetConfig" style="margin-top: 10px; margin-left: 10px;">' + filesColor[files] + '</button>';
                         }
                     }
                 }
-                botones += '<button type="button" class="btn btn-success savePresetColor" style="margin-top: 10px; margin-left: 10px;">Nuevo preset de color</button>';
+                botones += '<button type="button" class="btn btn-success savePresetConfig" style="margin-top: 10px; margin-left: 10px;">Nuevo preset de color</button>';
 
                 botones += '<input class="form-control text-primary" style="margin-top: 10px; width: 350px;" type="text" id="newNamePresetColor" name="newNamePresetColor" placeholder="nuevo preset colores preconfigurados.">';
 
@@ -580,7 +580,6 @@ $(document).ready(function () {
                 }
             }
         });
-
     });
 
 
@@ -591,7 +590,7 @@ $(document).ready(function () {
         };
         $.ajax({
             data: parametros,
-            url: './php/restorecolorespreset.php',
+            url: './php/restorePreset.php',
             type: 'post',
             beforeSend: function() {
                 //$('#listArchivos').html("Procesando, espere por favor...");
@@ -695,7 +694,7 @@ $(document).ready(function () {
             nameFile = $(this).html();
         }
         let color = $('#hiddenColores').val();
-        alert(color);
+        //alert(color);
         // grabar los cambios o en nuevo archivo
         $.ajax({
             type: "POST",
@@ -715,45 +714,6 @@ $(document).ready(function () {
                 return;
             }
         });
-    });
-
-    /* Configuración general -> save */
-    $("#butSaveConfigGral").click(function(){
-        let configAct = $('#fonts option:selected').index();
-
-        let colortexto  = $('#textColor').val();
-        let shadowColor = $('#shadowColor').val();
-        let backColor = $('#backgroundColor').val();
-
-        /* Para el checkbox actBGTexture */
-        let backgroundtextureactivarcheck;
-        if( $('#actBGTexture').prop('checked') ) {
-            backgroundtextureactivarcheck = true;
-        }else{
-            backgroundtextureactivarcheck = false;
-        }
-
-        // Sombras
-        let sombrasX = $('#sombrasX').val();
-        let sombrasY = $('#sombrasY').val();
-        let sombrasBlur = $('#sombrasBlur').val();
-
-        alert(configAct);
-    });
-
-    /* Configuración general -> load */
-    $("#butLoadConfigGral").click(function(){
-        
-        $('#fonts option')[12].selected = true;
-
-        /* Para el checkbox actBGTexture */
-        if (backgroundtextureactivarcheck == true){
-            $( "#actBGTexture").prop('checked', true);
-        }else{
-            $( "#actBGTexture").prop('checked', false);
-        }
-
-        alert('load');
     });
 
 });
