@@ -17,7 +17,7 @@ $("#butSaveConfigGral").click(function () {
         ['textColor', 'val'],
         ['shadowColor', 'val'],
         ['backgroundColor', 'val'],
-        ['actBGTexture', 'cb'],
+        /* ['actBGTexture', 'cb'], */
         ['backgroundColor', 'val'],
         /* SOMBRAS */
         ['sombrasX', 'val'],
@@ -336,7 +336,7 @@ function reasigCfg(configuracion) {
         ['textColor', 'val'],
         ['shadowColor', 'val'],
         ['backgroundColor', 'val'],
-        ['actBGTexture', 'cb'],
+        /* ['actBGTexture', 'cb'], */
         ['backgroundColor', 'val'],
         /* SOMBRAS */
         ['sombrasX', 'val'],
@@ -440,6 +440,7 @@ function reasigCfg(configuracion) {
     // recuperamos la textura
     elinvTitBonitos.texturaOverlaid = arrCfg[arrCfg.length-1];
     arrCfg.splice(-1,1);
+    arrCfg.splice(-1,1);
     let cont = 0;
     // recorremos todos los elementos
     arrCfg.forEach(element => {
@@ -463,6 +464,8 @@ function reasigCfg(configuracion) {
     });
 
     //alert(configuracion);
-    elinvTitBonitos.setEntorno()
+    elinvTitBonitos.resizeCanvas();
+    elinvTitBonitos.setEntorno();
 
 }
+

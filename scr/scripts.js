@@ -18,16 +18,16 @@ window.onload = function () {
 var elinvTitBonitos = {
     // Variables generales
     // contexto canva
-    cvs : document.querySelector('canvas'),
-    canvasTextSinEfectos : '',
+    cvs: document.querySelector('canvas'),
+    canvasTextSinEfectos: '',
     // texturas
-    texturaOverlaid : '',
+    texturaOverlaid: '',
     // copia contexto canvas
-    ctxCopy : '',
-    imgGetFile : '',
-    imgTextureLocal : '',
-    fontLoad : false,
-    fontFile : '',
+    ctxCopy: '',
+    imgGetFile: '',
+    imgTextureLocal: '',
+    fontLoad: false,
+    fontFile: '',
 
     /* Genera textura desde el input file */
     handleFilesFonts: function (e) {
@@ -42,10 +42,10 @@ var elinvTitBonitos = {
         var img = new Image;
         img.src = URL.createObjectURL(e.target.files[0]);
         //Reset input file para colver a cargar.
-        $("#textTexture").val('');        
+        $("#textTexture").val('');
         //cargamos la imagen
         img.onload = function () {
-            elinvTitBonitos.printTextGetFiles(img);            
+            elinvTitBonitos.printTextGetFiles(img);
         }
     },
 
@@ -93,11 +93,11 @@ var elinvTitBonitos = {
 
     // establecer el entorno del título a crear
     setEntorno: function (tipo, capas) {
-        
+
         /* anula el boton derecho en el canvas
         menu contextual */
         //$('body').on('contextmenu', '#myCanvas', function(e){ return false; });
-        
+
         // si los valores son nulos
         if (tipo === null || tipo === "") {
             //hacemos lo que se requiera en caso de que la variable contenga null   
@@ -105,11 +105,11 @@ var elinvTitBonitos = {
 
         // si la fuente fue cargada en forma local
         var myFont = '';
-        if (this.fontLoad == true){
+        if (this.fontLoad == true) {
             let fontLocal = URL.createObjectURL(this.fontFile);
-            myFont = new FontFace('localfont', 'url(' + fontLocal  + ')');
-        }else{
-        // o desde la base de font de este programa
+            myFont = new FontFace('localfont', 'url(' + fontLocal + ')');
+        } else {
+            // o desde la base de font de este programa
             myFont = new FontFace($('#fonts option:selected').text(), 'url(' + $('#fonts option:selected').val() + ')');
         }
 
@@ -122,17 +122,17 @@ var elinvTitBonitos = {
             let texto3 = $('#textLinea3').val();
             let texto4 = $('#textLinea4').val();
             let texto5 = $('#textLinea5').val();
-            let texto6 = $('#textLinea6').val();            
+            let texto6 = $('#textLinea6').val();
             // contexto canvas
             let ctx = this.cvs.getContext('2d');
 
             /* font que utilizaremos.
             si fue cargada en forma local */
-            if (this.fontLoad == true){
+            if (this.fontLoad == true) {
                 ctx.font = $('#sizeFont').val() + 'px ' + 'localfont';
                 this.fontLoad = false;
-            /* o desde el programa */
-            }else{
+                /* o desde el programa */
+            } else {
                 ctx.font = $('#sizeFont').val() + 'px ' + $('#fonts option:selected').text();
             }
 
@@ -172,7 +172,7 @@ var elinvTitBonitos = {
             }
             if (texto6) {
                 this.draw3dText(ctx, texto6, this.cvs.width / 2, separacion * 5 + topPrimerLinea, sombrasX, sombrasY, tipo, capas);
-            }                        
+            }
         })
     },
 
@@ -194,25 +194,25 @@ var elinvTitBonitos = {
             context.fillStyle = colorGradient;
             context.fillRect(0, 0, this.cvs.width, this.cvs.height);
 
-        } else if (actBGTexture.checked){
+        } else if (actBGTexture.checked) {
 
             /* Verifica si las variables no son nulas.
             Si se ha cargado una textura desde el programa */
-            if (this.imgTextureLocal){
+            if (this.imgTextureLocal) {
 
                 var ptrn = context.createPattern(this.imgTextureLocal, 'repeat');
                 context.fillStyle = ptrn;
                 context.fillRect(0, 0, this.cvs.width, this.cvs.height);
-            
+
                 // O se ha leido por el usuario
-            }else if (this.imgGetFile){
+            } else if (this.imgGetFile) {
 
                 var ptrn = context.createPattern(this.imgGetFile, 'repeat');
                 context.fillStyle = ptrn;
                 context.fillRect(0, 0, this.cvs.width, this.cvs.height);
 
-            //Sino se lo ayuda a gestionar la carga de una textura
-            }else{
+                //Sino se lo ayuda a gestionar la carga de una textura
+            } else {
                 alert('Debe seleccionar una imagen de fondo!')
             }
 
@@ -268,35 +268,35 @@ var elinvTitBonitos = {
             context.miterLimit = 2;
             context.strokeText(text, x, y);
         }
-        
-        // Zona de filtros
-        if (actFiltros.checked){
 
-            var filtros = [["hue_rotateCheck", "'hue-rotate(' + $(\"#hue_rotateFil\").val() + 'deg)'"], 
+        // Zona de filtros
+        if (actFiltros.checked) {
+
+            var filtros = [["hue_rotateCheck", "'hue-rotate(' + $(\"#hue_rotateFil\").val() + 'deg)'"],
             ["grayScaleCheck", "'grayscale(' + $(\"#grayscaleFil\").val() + '%)'"],
-            ["invertCheck", "'invert(' + $(\"#InvertFil\").val() + '%)'"], 
-            ["sepiaCheck", "'sepia(' + $(\"#sepiaFil\").val() + '%)'"], 
+            ["invertCheck", "'invert(' + $(\"#InvertFil\").val() + '%)'"],
+            ["sepiaCheck", "'sepia(' + $(\"#sepiaFil\").val() + '%)'"],
             ["brightnessCheck", "'brightness(' + $(\"#brightnessFil\").val() + '%)'"],
-            ["contrastCheck", "'contrast(' + $(\"#contrastFil\").val() + '%)'"], 
-            ["saturateCheck", "'saturate(' + $(\"#saturateFil\").val() + '%)'"], 
+            ["contrastCheck", "'contrast(' + $(\"#contrastFil\").val() + '%)'"],
+            ["saturateCheck", "'saturate(' + $(\"#saturateFil\").val() + '%)'"],
             ["blurCheck", "'blur(' + $(\"#blurFil\").val() + 'px)'"],
             ["opacityCheck", "'opacity(' + $(\"#opacityFil\").val() + '%)'"]];
 
-            let i, filtrosAplicar = '', mult=0;
+            let i, filtrosAplicar = '', mult = 0;
             for (i = 0; i < filtros.length; i++) {
-                if(eval(filtros[i][0] + '.checked')){
+                if (eval(filtros[i][0] + '.checked')) {
                     filtrosAplicar += eval(filtros[i][1] + ' ');
                     mult += 1;
                 }
             }
- 
-            if (mult == 0){
+
+            if (mult == 0) {
                 context.filter = 'none';
-            }else{
+            } else {
                 context.filter = filtrosAplicar;
             }
 
-        }else{
+        } else {
             context.filter = 'none';
         }
 
@@ -386,7 +386,7 @@ var elinvTitBonitos = {
         backCanvas.width = this.cvs.width;
         backCanvas.height = this.cvs.height;
         var backCtx = backCanvas.getContext('2d');
-      
+
         // texto ingresado por formulario
         let texto1 = $('#textLinea1').val();
         let texto2 = $('#textLinea2').val();
@@ -420,7 +420,7 @@ var elinvTitBonitos = {
         // destination-atop destination-in destination-over     destination-out
         // lighter copy xor
         backCtx.globalCompositeOperation = "source-in";
-        
+
         if (getFile == 'getfile') {
             /* textura en texto en canvas secundario*/
             backCtx.drawImage(img, $('#OverXOrigenGet').val(), $('#OverYOrigenGet').val(), $('#Ancho_OrigenGet').val(), $('#Alto_OrigenGet').val(), $('#OverXDestinoGet').val(), $('#OverYDestinoGet').val(), $('#Ancho_DestinoGet').val(), $('#Alto_DestinoGet').val());
@@ -428,7 +428,7 @@ var elinvTitBonitos = {
             /* textura en texto en canvas secundario*/
             backCtx.drawImage(img, $('#OverXOrigen').val(), $('#OverYOrigen').val(), $('#Ancho_Origen').val(), $('#Alto_Origen').val(), $('#OverXDestino').val(), $('#OverYDestino').val(), $('#Ancho_Destino').val(), $('#Alto_Destino').val());
         }
-        
+
         // Imagen texture local a variable global a nivel del objeto.
         this.imgTextureLocal = img;
 
@@ -439,7 +439,7 @@ var elinvTitBonitos = {
 
 // funcionalidad herramientas tabs
 $(function () {
-    
+
     /* Controlador del tab menu */
     $("#tabs-nav a").click(function (event) {
         event.preventDefault();
@@ -457,38 +457,38 @@ $(document).ready(function () {
     $("div[data-includeHTML]").each(function () {
         $(this).load($(this).attr("data-includeHTML"));
     });
-   
+
     /* Boton para asignar color prefijado y actualizar canvas */
     $("#butAsignColorPref").click(function () {
-        
+
         // controlar check radios colores prefijados
         const rBPrefColor = document.querySelectorAll('input[name="prefijColor"]');
-        var selPrefColor; 
+        var selPrefColor;
         for (const radioButton of rBPrefColor) {
             if (radioButton.checked) {
                 selPrefColor = radioButton.value;
                 break;
             }
         }
-        if (selPrefColor){
+        if (selPrefColor) {
             //alert(`Ha seleccionado ${selPrefColor}`);
-        }else{
+        } else {
             alert(`Aun no ha seleccionado ninguna color prefijado.`);
             return;
         }
 
         // controlar check radios para destino de colores
         const rBAsignColor = document.querySelectorAll('input[name="prefijColorAsign"]');
-        var asigPrefColor; 
+        var asigPrefColor;
         for (const radioButton of rBAsignColor) {
             if (radioButton.checked) {
                 asigPrefColor = radioButton.value;
                 break;
             }
         }
-        if (asigPrefColor){
+        if (asigPrefColor) {
             //alert(`Ha seleccionado ${asigPrefColor}`);
-        }else{
+        } else {
             alert(`Aun no ha seleccionado destino del color prefijado.`);
             return;
         }
@@ -499,27 +499,27 @@ $(document).ready(function () {
             case 'asignTextColor':
                 color = document.getElementById(selPrefColor).value;
                 document.getElementById("textColor").value = color;
-            break;
+                break;
             case 'asignShadowColor':
                 color = document.getElementById(selPrefColor).value;
                 document.getElementById("shadowColor").value = color;
-            break;
+                break;
             case 'asignBgColor':
                 color = document.getElementById(selPrefColor).value;
                 document.getElementById("backgroundColor").value = color;
-            break;            
+                break;
             default:
-            break;
+                break;
         }
-        elinvTitBonitos.setEntorno();        
-    });    
+        elinvTitBonitos.setEntorno();
+    });
 
     /* Salvamos setting colores prefijados. */
-    $("#butSaveColorPref").click(function(){
+    $("#butSaveColorPref").click(function () {
         // recogemos los colores configurados por el usuario.
-        let index, color='';
+        let index, color = '';
         for (index = 1; index <= 8; index++) {
-            color += document.getElementById('colorPrefijado' + index).value + '|';            
+            color += document.getElementById('colorPrefijado' + index).value + '|';
         }
         /* recuperamos los archivos creados para asesorar 
         al usuario y no crear copias iguales */
@@ -551,11 +551,11 @@ $(document).ready(function () {
                 for (const files in filesColor) {
                     if (Object.hasOwnProperty.call(filesColor, files)) {
                         if (filesColor[files] != 'undefined') {
-                            botones += '<button type="button" class="btn btn-primary savePresetConfig" style="margin-top: 10px; margin-left: 10px;">' + filesColor[files] + '</button>';
+                            botones += '<button type="button" class="btn btn-primary savePresetColor" style="margin-top: 10px; margin-left: 10px;">' + filesColor[files] + '</button>';
                         }
                     }
                 }
-                botones += '<button type="button" class="btn btn-success savePresetConfig" style="margin-top: 10px; margin-left: 10px;">Nuevo preset de color</button>';
+                botones += '<button type="button" class="btn btn-success savePresetColor" style="margin-top: 10px; margin-left: 10px;">Nuevo preset de color</button>';
 
                 botones += '<input class="form-control text-primary" style="margin-top: 10px; width: 350px;" type="text" id="newNamePresetColor" name="newNamePresetColor" placeholder="nuevo preset colores preconfigurados.">';
 
@@ -584,7 +584,7 @@ $(document).ready(function () {
 
 
     /* Restaurar setting colores prefijados. */
-    $("#butRestoreColorPref").click(function(){
+    $("#butRestoreColorPref").click(function () {
         var parametros = {
             "valorCaja1": "valorCaja1"
         };
@@ -592,16 +592,16 @@ $(document).ready(function () {
             data: parametros,
             url: './php/restorePreset.php',
             type: 'post',
-            beforeSend: function() {
+            beforeSend: function () {
                 //$('#listArchivos').html("Procesando, espere por favor...");
             },
-            success: function(response) {
+            success: function (response) {
                 // todos los archivos del directorio
                 let arr = new Array();
                 arr = JSON.parse(response);
                 let cuantos = arr.length;
                 // filtramos a nuestra extensión
-                var filesColor = arr.filter(function(file){
+                var filesColor = arr.filter(function (file) {
                     return file.indexOf('.color') !== -1;
                 });
                 //console.log(filesColor);
@@ -609,11 +609,11 @@ $(document).ready(function () {
                 $(".modal-title").html('Restaurar presets colores preconfigurados');
                 $("#dialTitleCuestion").html("Seleccione setting a restaurar?");
                 // bucle por los archivos colectados.
-                let botones='';
+                let botones = '';
                 for (const files in filesColor) {
                     if (Object.hasOwnProperty.call(filesColor, files)) {
-                        if (filesColor[files] != 'undefined'){
-                            botones += '<button type="button" class="btn btn-primary restorePresetColor" style="margin-left: 10px;">'+filesColor[files]+'</button>';
+                        if (filesColor[files] != 'undefined') {
+                            botones += '<button type="button" class="btn btn-primary restorePresetColor" style="margin-left: 10px;">' + filesColor[files] + '</button>';
                         }
                     }
                 }
@@ -624,7 +624,7 @@ $(document).ready(function () {
                 showModal();
                 //$("#myModal").modal('show');                
             },
-            error: function(xhr, status, text) {
+            error: function (xhr, status, text) {
                 var response = $.parseJSON(xhr.responseText);
                 console.log('Failure!');
                 if (response) {
@@ -638,11 +638,11 @@ $(document).ready(function () {
 
     // despliega el modal dialog
     function showModal(params) {
-        $("#myModal").modal('show'); 
+        $("#myModal").modal('show');
     }
 
     // ejecuta button creado dinamico para restaurar preset colores
-    $(document).on("click", ".restorePresetColor", function() {
+    $(document).on("click", ".restorePresetColor", function () {
         var parametros = {
             nameFile: $(this).html()
         };
@@ -650,14 +650,14 @@ $(document).ready(function () {
             data: parametros,
             url: './php/colorCFGRestore.php',
             type: 'post',
-            beforeSend: function() {
+            beforeSend: function () {
                 console.log("Procesando, espere por favor...");
             },
-            success: function(response) {
+            success: function (response) {
                 //let respuesta = JSON.parse(response);
                 reasigColorFileLoad(response);
             },
-            error: function(xhr, status, text) {
+            error: function (xhr, status, text) {
                 var response = $.parseJSON(xhr.responseText);
                 console.log('Failure!');
                 if (response) {
@@ -667,10 +667,10 @@ $(document).ready(function () {
                 }
             }
         });
-     });
+    });
 
-     // Reasigna colores al panel de acuerdo al archivo cargado
-     function reasigColorFileLoad(coloresLeidos) {
+    // Reasigna colores al panel de acuerdo al archivo cargado
+    function reasigColorFileLoad(coloresLeidos) {
         const arrColores = coloresLeidos.split("|");
         let cont = 1;
         arrColores.forEach(element => {
@@ -678,14 +678,14 @@ $(document).ready(function () {
             document.getElementById('colorPrefijado' + cont).value = element;
             cont++;
         });
-     }
+    }
 
     // ejecuta button creado dinamico para restaurar preset colores
     $(document).on("click", ".savePresetColor", function () {
         // si se sobreescribe un archivo o se crea uno nuevo
         let nameFile = '';
-        if ($(this).html() == 'Nuevo preset de color'){
-            if ($('#newNamePresetColor').val() == ''){
+        if ($(this).html() == 'Nuevo preset de color') {
+            if ($('#newNamePresetColor').val() == '') {
                 alert('No ha ingresado nombre del nuevo archivo de configuración!');
                 return;
             }
@@ -716,5 +716,25 @@ $(document).ready(function () {
         });
     });
 
+    // button save canvas image
+    download.addEventListener('click', function (e) {
+        // creamos el download de la imagen
+        const link = document.createElement('a');
+        //name file aleatorio
+        let newDate = new Date();
+        let name =  
+        newDate.getFullYear() + '_' +
+        parseInt(newDate.getMonth()+1) + '_' +
+        newDate.getDate() + '_' +
+        newDate.getTime();
+        // descargamos.
+        link.download = `${name}.png`;
+        link.href = elinvTitBonitos.cvs.toDataURL();
+        link.click();
+        link.delete;
+    }); 
+
 });
+
+
 
