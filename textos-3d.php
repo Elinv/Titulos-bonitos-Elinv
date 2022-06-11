@@ -19,6 +19,11 @@
 </head>
 
 <body>
+    
+    <!-- Regeneramos las nuevas texturas y actualizamos -->
+    <?php include './files/listTexturas.php'; ?> 
+    <!-- Regeneramos las nuevas fonts y actualizamos -->
+    <?php include './files/listFonts.php'; ?> 
 
     <div class="container">
         <div class="row" style="margin-top: 1rem !important;">
@@ -907,7 +912,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- DIALOGO MODAL -->
     <div class="m-4">
