@@ -136,7 +136,7 @@
                                 </button>
                                 <hr>
                                 <a href="https://github.com/Elinv/Titulos-bonitos-Elinv" target="_blank">
-                                    <button id="reset" 
+                                    <button id="githubLink" 
                                         style="margin-left: 20px; margin-top: 10px;" 
                                         class="btn btn-danger">
                                             Titulos-bonitos-Elinv - Gracias a GITHUB!
