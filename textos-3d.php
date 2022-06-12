@@ -94,13 +94,13 @@
 
                                 <div style="padding-top: 5px;">
                                     <input class="form-control text-primary text-center" type="text" id="textLinea5"
-                                        name="textLinea5" placeholder="Texto linea 5" value="💖"
+                                        name="textLinea5" placeholder="Texto linea 5" value="💖@twitter_lpm"
                                         onchange="elinvTitBonitos.setEntorno();">
                                 </div>
 
                                 <div style="padding-top: 5px;">
                                     <input class="form-control text-primary text-center" type="text" id="textLinea6"
-                                        name="textLinea6" placeholder="Texto linea 6" value="🎼"
+                                        name="textLinea6" placeholder="Texto linea 6" value="🎼elinv.musica.ar"
                                         onchange="elinvTitBonitos.setEntorno();">
                                 </div>
                             </div>
@@ -128,6 +128,20 @@
                                     class="btn btn-primary">
                                         Grabar imagen
                                 </button>
+
+                                <button id="reset" 
+                                    style="margin-left: 20px; margin-top: 10px;" 
+                                    class="btn btn-primary">
+                                        Reset form
+                                </button>
+                                <hr>
+                                <a href="https://github.com/Elinv/Titulos-bonitos-Elinv" target="_blank">
+                                    <button id="reset" 
+                                        style="margin-left: 20px; margin-top: 10px;" 
+                                        class="btn btn-danger">
+                                            Titulos-bonitos-Elinv - Gracias a GITHUB!
+                                    </button>
+                                </a>                           
 
                             </div>
                         </div>

@@ -86,7 +86,8 @@ var elinvTitBonitos = {
             //if (nombre.length > 8) { nombre = nombre.substring(0, 16); }
             select.options[select.options.length] = new Option(nombre, fuentes[index]);
         }
-
+        // Seleccionamos estilo letra amazonas
+        $('#fonts option').eq(8).prop('selected', true);
         /* Total fuentes cargadas */
         $('#fontLoads').text(' ( Fuentes cargadas: ' + fuentes.length + ' )');
     },
@@ -155,7 +156,7 @@ var elinvTitBonitos = {
             let topPrimerLinea = 150;
 
             // ahora el texto
-            if (texto1) {
+            if (texto1) {tipo
                 this.draw3dText(ctx, texto1, this.cvs.width / 2, topPrimerLinea, sombrasX, sombrasY, tipo, capas);
             }
             if (texto2) {
@@ -732,6 +733,15 @@ $(document).ready(function () {
         link.href = elinvTitBonitos.cvs.toDataURL();
         link.click();
         link.delete;
+    });
+
+    // button reset textbox form
+    reset.addEventListener('click', function (e) {
+        // creamos el download de la imagen
+        let index = 0;
+        for (index = 0; index <= 6; index++) {
+            $('#textLinea'+index).val('');
+        }
     }); 
 
 });
